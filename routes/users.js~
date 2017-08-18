@@ -117,7 +117,7 @@ passport.use(new LocalStrategy(
 	));
 
 router.post('/login',passport.authenticate('local',{failureRedirect:'/users/login',failureFlash:'Invalid username or password'}),function(req,res){
-	console.log('Authentication successful');
+	console.log('Authentication successfull');
 	req.flash('Success','you are logged in');
 	res.redirect('/');
 });
