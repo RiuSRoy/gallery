@@ -34,12 +34,14 @@ html
 					ul.nav.navbar-nav.navbar-right
 						if user
 							li
+								a(href='/myprofile') Profile
+							li
 								a(href='/posts/add') Upload
 							li
 								a(href='/users/logout') Logout
 		.container
 			block content
-			!= messages()
+				!= messages()
 
 	script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
 	| 

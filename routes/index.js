@@ -3,9 +3,6 @@ var router = express.Router();
 var mongo = require('mongodb');
 var db = require('monk')('localhost/newgallery');
 
-/* GET home page. */
-
-
 router.get('/',function(req, res, next) {
 		var posts = db.get('posts');
 		posts.find({},{},function(err,posts){
@@ -14,6 +11,22 @@ router.get('/',function(req, res, next) {
 			});
 		});
 });
+
+router.get('/myprofile',isLoggedIn,function(req,res,next){
+		res.render('profile',{
+		});
+});
+/*
+router.get('/data',function(req,res){
+	var users = db.get('users');
+	users.findOne(function(err,datas){
+		if (err) {
+			res.send(err);
+		}
+			res.send(datas);
+	});
+});
+*/
 
 router.post('/',function(req,res,next){
 	var body = req.body.body;
@@ -54,6 +67,12 @@ function ensureAuthenticated(req,res,next){
 	{
 		res.redirect('/users/login');
 	}
+}
+
+function isLoggedIn(req,res,next){
+	if(req.isAuthenticated())
+		return next();
+	res.redirect('/');
 }
 
 module.exports = router;
