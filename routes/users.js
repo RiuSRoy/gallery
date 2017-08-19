@@ -151,13 +151,13 @@ passport.use(new LocalStrategy(
 
 
 router.post('/login',passport.authenticate('local',{failureRedirect:'/users/login',failureFlash:'Invalid username or password'}),function(req,res){
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	console.log('Authentication successful');
-=======
+//=======
 	console.log('Authentication successfull');
 //	global.username = req.body.username;
 //	console.log(username);
->>>>>>> upstream/master
+//>>>>>>> upstream/master
 	req.flash('Success','you are logged in');
 //	res.send(req.body.username);
 	res.redirect('/');
